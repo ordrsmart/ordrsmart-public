@@ -1,0 +1,305 @@
+/*
+ * closeButton styles a close button.
+ */
+ .closeButton {
+    /* absolute position */
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 24px;
+    height: 24px;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+}
+.closeButton:hover {
+    background: rgba(55, 53, 47, 0.08);
+}
+.closeButton:before, .closeButton:after {
+    position: absolute;
+    top: 4px;
+    left: 11px;
+    content: ' ';
+    height: 16px;
+    width: 2px;
+    background-color: rgba(55, 53, 47, 0.45);
+}
+.closeButton:before {
+    transform: rotate(45deg);
+}
+.closeButton:after {
+    transform: rotate(-45deg);
+}
+.closeButton:hover::before {
+    background-color: black;
+    opacity: 0.7;
+}
+.closeButton:hover::after {
+    background-color: black;
+    opacity: 0.7;
+}
+
+/*
+ * loadingContainer styles a container with respect to the frame of the
+ * container of the target being loaded.
+ */
+.loadingContainer {
+    /* absolute position */
+    left: 0;
+    position: absolute;
+    top: 0;
+
+    /* take full size */
+    height: 100%;
+    width: 100%;
+
+    /* center */
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  
+    background: white;
+}
+
+/*
+ * requestSampleButton styles the HTML button component with the name 'requestSampleButton'.
+ * Its attributes are meant to mimic buttons on https://ordrsmart.webflow.io/
+ */
+.requestSampleButton {
+    font: inherit;
+    margin: 0;
+  
+    border: 0;
+    
+    /* position as a floating action button */
+    position: fixed;
+    z-index: 9998;
+    
+    transition: opacity 200ms ease;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+  
+    padding: 8px 12px;
+    border-radius: 6px;
+    background-color: #3d8a51; /* sea green */
+    box-shadow: rgba(0,0,0,.25) 0 2px 5px;
+    transition-property: none;
+
+    font-size: 16px;
+  
+    overflow: visible;
+}
+.requestSampleButton:hover {
+    background-color: #336640;
+}
+.requestSampleButton.top-left {
+    /* position on the top left of the page */
+    top: 30px;
+    left: 40px;
+}
+.requestSampleButton.top-right {
+    /* position on the top right of the page */
+    top: 30px;
+    right: 40px;
+}
+.requestSampleButton.bottom-left {
+    /* position on the bottom left of the page */
+    bottom: 30px;
+    left: 40px;
+}
+.requestSampleButton.bottom-right {
+    /* position on the bottom right of the page */
+    bottom: 30px;
+    right: 40px;
+}
+
+/* 
+ * sampleRequestFormContainer styles the container that contains the Sample
+ * Request Form iFrame.
+ */
+.sampleRequestFormContainer {
+    width: 0;
+    height: 100vh;
+    max-width: 100%;
+    right: 0px;
+    top: 0px;
+  
+    /* add shadow effects around the container */
+    box-shadow: rgba(15, 15, 15, 0.016) 0px 0px 0px 1px, rgba(15, 15, 15, 0.03) 0px 3px 6px, rgba(15, 15, 15, 0.06) 0px 9px 24px;
+
+    /* disable vertical scrolling */
+    overflow-y: hidden;
+    overflow-x: auto;
+
+    position: fixed;
+    z-index: 9999;
+
+    /* animation definitions */
+    -moz-animation: slide 0.25s ease forwards;
+    -webkit-animation: slide 0.25s ease forwards;
+    -o-animation: slide 0.25s ease forwards;
+    -ms-animation: slide 0.25s ease forwards;
+    animation: slide 0.25s ease forwards;
+}
+
+/* 
+ * sampleRequestFormIFrame styles the iFrame that loads the Sample Request Form.
+ */
+.sampleRequestFormIFrame {
+    /* take full size */
+    height: 100%;
+    width: 100%;
+
+    border: 0;
+    margin: 0;
+}
+
+/* https://www.w3schools.com/howto/howto_css_loader.asp */
+.spinner {
+    /* Light grey */
+    border: 16px solid #F3F3F3;
+
+    /* sea green */
+    border-top: 16px solid #2E8B57;
+
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+
+    /* animation definitions */
+    -moz-animation: spin 2s linear infinite;
+    -webkit-animation: spin 2s linear infinite;
+    -o-animation: spin 2s linear infinite;
+    -ms-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+
+/* Slide animations for different browsers/platforms */
+@-moz-keyframes slide
+
+/* Firefox */
+    {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 500px;
+    }
+}
+
+@-webkit-keyframes slide
+
+/* Safari and Chrome */
+    {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 500px;
+    }
+}
+
+@-o-keyframes slide
+
+/* Opera */
+    {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 500px;
+    }
+}
+
+@-ms-keyframes slide
+
+/* IE10 */
+    {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 500px;
+    }
+}
+
+@keyframes slide {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 500px;
+    }
+}
+
+
+/* Spin animations for different browsers/platforms */
+@-moz-keyframes spin
+
+/* Firefox */
+    {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin
+
+/* Safari and Chrome */
+    {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@-o-keyframes spin
+
+/* Opera */
+    {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@-ms-keyframes spin
+
+/* IE10 */
+    {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
