@@ -28,7 +28,7 @@ jobs:
     - name: ping-request-sample-v2
       uses: srt32/uptime@v0.2.1
       with:
-        url-to-hit: "https://ordrsmart.com/request-a-sample/request-a-sample-v2"
+        url-to-hit: "https://www.ordrsmart.com/request-a-sample/request-a-sample-v2"
         expected-statuses: "200"
   ping-ordrsmart-supplier-dashboard:
     runs-on: ubuntu-latest
