@@ -23,5 +23,5 @@ jobs:
     - name: ping-supplier-dashboard
       uses: srt32/uptime@v0.2.1
       with:
-        url-to-hit: "https://www.ordrsmart.webflow.io/supplier-dashboard"
+        url-to-hit: "https://ordrsmart.webflow.io/supplier-dashboard"
         expected-statuses: "200"
