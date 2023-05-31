@@ -53,3 +53,9 @@ jobs:
     - name: slack-notification
       id: slack
       uses: slackapi/slack-github-action@v1.24.0
+      with:
+        payload: |
+          {
+            "key": "value",
+            "foo": "bar"
+          }
