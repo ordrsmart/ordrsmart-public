@@ -9,11 +9,33 @@ on:
 jobs:
   ping-ordrsmart-github-pages:
     runs-on: ubuntu-latest
-    name: uptime-check
+    name: uptime-check-ordrsmart-github-pages
     steps:
-    - name: ping-ordrsmart-github-pages
+    - name: ping-request-sample-widget-css
       uses: srt32/uptime@v0.2.1
       with:
-        # url-to-hit: "https://ordrsmart.github.io/"
-        url-to-hit: "https://devopsdirective.com/"
+        url-to-hit: "https://ordrsmart.github.io/ordrsmart-public/samples/request-sample-widget.css"
+        expected-statuses: "200"
+    - name: ping-request-sample-widget-js
+      uses: srt32/uptime@v0.2.1
+      with:
+        url-to-hit: "https://ordrsmart.github.io/ordrsmart-public/samples/request-sample-widget.js"
+        expected-statuses: "200"
+  ping-ordrsmart-request-sample-v2:
+    runs-on: ubuntu-latest
+    name: uptime-check-ordrsmart-request-sample-v2
+    steps:
+    - name: ping-request-sample-v2
+      uses: srt32/uptime@v0.2.1
+      with:
+        url-to-hit: "https://ordrsmart.com/request-a-sample/request-a-sample-v2"
+        expected-statuses: "200"
+  ping-ordrsmart-supplier-dashboard:
+    runs-on: ubuntu-latest
+    name: uptime-check-ordrsmart-supplier-dashboard
+    steps:
+    - name: ping-supplier-dashboard
+      uses: srt32/uptime@v0.2.1
+      with:
+        url-to-hit: "https://www.ordrsmart.com/supplier-dashboard"
         expected-statuses: "200"
