@@ -10,6 +10,9 @@ jobs:
   ping-ordrsmart-github-pages:
     runs-on: ubuntu-latest
     name: uptime-check-ordrsmart-github-pages
+    env:
+      SLACK_WEBHOOK_URL_ALERTS: ${{ secrets.SLACK_WEBHOOK_URL_ALERTS }}
+    
     steps:
     - name: ping-request-sample-widget-css
       uses: srt32/uptime@v0.2.1
@@ -21,21 +24,32 @@ jobs:
       with:
         url-to-hit: "https://ordrsmart.github.io/ordrsmart-public/samples/request-sample-widget.js"
         expected-statuses: "200"
+  
   ping-ordrsmart-request-sample-v2:
     runs-on: ubuntu-latest
     name: uptime-check-ordrsmart-request-sample-v2
+    env:
+      SLACK_WEBHOOK_URL_ALERTS: ${{ secrets.SLACK_WEBHOOK_URL_ALERTS }}
+    
     steps:
     - name: ping-request-sample-v2
       uses: srt32/uptime@v0.2.1
       with:
         url-to-hit: "https://www.ordrsmart.com/request-a-sample/request-a-sample-v2"
         expected-statuses: "200"
+  
   ping-ordrsmart-supplier-dashboard:
     runs-on: ubuntu-latest
     name: uptime-check-ordrsmart-supplier-dashboard
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_ALERTS }}
+    
     steps:
     - name: ping-supplier-dashboard
       uses: srt32/uptime@v0.2.1
       with:
         url-to-hit: "https://www.ordrsmart.com/supplier-dashboard"
         expected-statuses: "200"
+    - name: slack-notification
+      id: slack
+      uses: slackapi/slack-github-action@v1.24.0
