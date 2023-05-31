@@ -1,0 +1,17 @@
+name: uptime-monitor
+
+on:
+  schedule:
+    # run every hour
+    - cron: '0 * * * *'
+
+jobs:
+  ping-ordrsmart-github-pages:
+    runs-on: ubuntu-latest
+    name: uptime-check
+    steps:
+    - name: ping-ordrsmart-github-pages
+      uses: srt32/uptime@v0.2.1
+      with:
+        url-to-hit: "https://ordrsmart.github.io/"
+        expected-statuses: "200"
