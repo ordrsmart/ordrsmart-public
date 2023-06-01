@@ -44,19 +44,21 @@ jobs:
     
     steps:
     - name: ping-supplier-dashboard
+      id: pingSupplierDashboard
       uses: srt32/uptime@v0.2.1
       with:
         url-to-hit: "https://www.ordrsmart.com/supplier-dashboard"
         expected-statuses: "200"
     - name: slack-notification
-      if: ${{ job.status }} == 'failure'
-      id: slack-notification
+      if: failure() && steps.pingSupplierDashboard.outcome == 'failure'
+      id: slackNotification
       uses: slackapi/slack-github-action@v1.24.0
       with:
         # ID for the #alerts channel (https://ordrsmart.slack.com/archives/C05A2LFUR38)
         channel-id: 'C05A2LFUR38'
         payload: |
           {
+            "text": "uptime-check-ordrsmart-supplier-dashboard result: `failed`"
             "blocks": [
               {
                 "type": "section",
