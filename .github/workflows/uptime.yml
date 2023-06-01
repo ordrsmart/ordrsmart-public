@@ -50,12 +50,12 @@ jobs:
       with:
         url-to-hit: "https://www.ordrsmart.com/supplier-dashboard"
         expected-statuses: "200"
-    - name: slack-notification
+    - name: Post to a Slack channel
       id: slack
       uses: slackapi/slack-github-action@v1.24.0
       with:
-        payload: |
-          {
-            "key": "value",
-            "foo": "bar"
-          }
+        # ID for the #alerts channel (https://ordrsmart.slack.com/archives/C05A2LFUR38)
+        channel-id: 'C05A2LFUR38'
+        slack-message: "uptime-check-ordrsmart-supplier-dashboard result: ${{ job.status }}"
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN_ALERTS }}
