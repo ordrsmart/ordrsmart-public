@@ -58,7 +58,7 @@ jobs:
         channel-id: 'C05A2LFUR38'
         payload: |
           {
-            "text": "uptime-check-ordrsmart-supplier-dashboard result: `failed`"
+            "text": "uptime-check-ordrsmart-supplier-dashboard result: `failed`",
             "blocks": [
               {
                 "type": "section",
