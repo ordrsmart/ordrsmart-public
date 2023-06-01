@@ -41,8 +41,6 @@ jobs:
   ping-ordrsmart-supplier-dashboard:
     runs-on: ubuntu-latest
     name: uptime-check-ordrsmart-supplier-dashboard
-    env:
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_ALERTS }}
     
     steps:
     - name: ping-supplier-dashboard
@@ -56,6 +54,22 @@ jobs:
       with:
         # ID for the #alerts channel (https://ordrsmart.slack.com/archives/C05A2LFUR38)
         channel-id: 'C05A2LFUR38'
-        slack-message: "uptime-check-ordrsmart-supplier-dashboard result: ${{ job.status }}"
+        payload: |
+          {
+            "text": "uptime-check-ordrsmart-supplier-dashboard result: ${{ job.status }}",
+            "blocks": [
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "uptime-check-ordrsmart-supplier-dashboard result: ${{ job.status }}"
+                }
+              }
+            ]
+          }
+#       with:
+#         # ID for the #alerts channel (https://ordrsmart.slack.com/archives/C05A2LFUR38)
+#         channel-id: 'C05A2LFUR38'
+#         slack-message: "uptime-check-ordrsmart-supplier-dashboard result: ${{ job.status }}"
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN_ALERTS }}
