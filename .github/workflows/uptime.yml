@@ -48,28 +48,24 @@ jobs:
       with:
         url-to-hit: "https://www.ordrsmart.com/supplier-dashboard"
         expected-statuses: "200"
-    - name: Post to a Slack channel
-      id: slack
+    - name: slack-notification
+      if: ${{ job.status }} == 'failure'
+      id: slack-notification
       uses: slackapi/slack-github-action@v1.24.0
       with:
         # ID for the #alerts channel (https://ordrsmart.slack.com/archives/C05A2LFUR38)
         channel-id: 'C05A2LFUR38'
         payload: |
           {
-            "text": "uptime-check-ordrsmart-supplier-dashboard result: ${{ job.status }}",
             "blocks": [
               {
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": "uptime-check-ordrsmart-supplier-dashboard result: ${{ job.status }}"
+                  "text": "uptime-check-ordrsmart-supplier-dashboard result: `failed`"
                 }
               }
             ]
           }
-#       with:
-#         # ID for the #alerts channel (https://ordrsmart.slack.com/archives/C05A2LFUR38)
-#         channel-id: 'C05A2LFUR38'
-#         slack-message: "uptime-check-ordrsmart-supplier-dashboard result: ${{ job.status }}"
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN_ALERTS }}
