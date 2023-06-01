@@ -47,7 +47,7 @@ jobs:
       id: pingSupplierDashboard
       uses: srt32/uptime@v0.2.1
       with:
-        url-to-hit: "https://www.ordrsmart.com/supplier-dash"
+        url-to-hit: "https://www.ordrsmart.com/supplier-dashboard"
         expected-statuses: "200"
     - name: slack-notification
       if: failure() && steps.pingSupplierDashboard.outcome == 'failure'
