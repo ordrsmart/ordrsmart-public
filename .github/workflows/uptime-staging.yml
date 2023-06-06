@@ -3,25 +3,71 @@ name: uptime-monitor-staging
 on:
   schedule:
     # run every hour
-#     - cron: '0 * * * *'
-    - cron: '*/10 * * * *'
+    - cron: '0 * * * *'
 
 jobs:
-  ping-ordrsmart-request-sample-v2:
+  ping-ordrsmart-request-sample-v2-staging:
     runs-on: ubuntu-latest
-    name: uptime-check-ordrsmart-request-sample-v2
+    name: uptime-check-ordrsmart-request-sample-v2-staging
     steps:
-    - name: ping-request-sample-v2
+    - name: ping-request-sample-v2-staging
+      id: pingRequestSampleV2Staging
       uses: srt32/uptime@v0.2.1
       with:
         url-to-hit: "https://ordrsmart.webflow.io/request-a-sample/request-a-sample-v2"
         expected-statuses: "200"
-  ping-ordrsmart-supplier-dashboard:
+    - name: slack-notification
+      if: failure() && steps.pingRequestSampleV2Staging.outcome == 'failure'
+      id: slackNotification
+      uses: slackapi/slack-github-action@v1.24.0
+      with:
+        # ID for the #alerts channel (https://ordrsmart.slack.com/archives/C05A2LFUR38)
+        channel-id: 'C05A2LFUR38'
+        payload: |
+          {
+            "text": "uptime-check-ordrsmart-request-sample-v2-staging result: `failed`",
+            "blocks": [
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "uptime-check-ordrsmart-request-sample-v2-staging result: `failed`"
+                }
+              }
+            ]
+          }
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN_ALERTS }}
+  
+  ping-ordrsmart-supplier-dashboard-staging:
     runs-on: ubuntu-latest
-    name: uptime-check-ordrsmart-supplier-dashboard
+    name: uptime-check-ordrsmart-supplier-dashboard-staging
     steps:
-    - name: ping-supplier-dashboard
+    - name: ping-supplier-dashboard-staging
+      id: pingSupplierDashboardStaging
       uses: srt32/uptime@v0.2.1
       with:
         url-to-hit: "https://ordrsmart.webflow.io/supplier-dashboard"
         expected-statuses: "200"
+    - name: slack-notification
+      if: failure() && steps.pingSupplierDashboardStaging.outcome == 'failure'
+      id: slackNotification
+      uses: slackapi/slack-github-action@v1.24.0
+      with:
+        # ID for the #alerts channel (https://ordrsmart.slack.com/archives/C05A2LFUR38)
+        channel-id: 'C05A2LFUR38'
+        payload: |
+          {
+            "text": "uptime-check-ordrsmart-supplier-dashboard-staging result: `failed`",
+            "blocks": [
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "uptime-check-ordrsmart-supplier-dashboard-staging result: `failed`"
+                }
+              }
+            ]
+          }
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN_ALERTS }}
