@@ -3,8 +3,7 @@ name: uptime-monitor
 on:
   schedule:
     # run every hour
-#     - cron: '0 * * * *'
-    - cron: '*/10 * * * *'
+    - cron: '0 * * * *'
 
 jobs:
   ping-ordrsmart-github-pages:
@@ -15,15 +14,39 @@ jobs:
     
     steps:
     - name: ping-request-sample-widget-css
+      id: pingRequestSampleWidgetCSS
       uses: srt32/uptime@v0.2.1
       with:
         url-to-hit: "https://ordrsmart.github.io/ordrsmart-public/samples/request-sample-widget.css"
         expected-statuses: "200"
     - name: ping-request-sample-widget-js
+      id: pingRequestSampleWidgetJS
       uses: srt32/uptime@v0.2.1
       with:
         url-to-hit: "https://ordrsmart.github.io/ordrsmart-public/samples/request-sample-widget.js"
         expected-statuses: "200"
+    - name: slack-notification
+      if: failure() && (steps.pingRequestSampleWidgetCSS.outcome == 'failure' || steps.pingRequestSampleWidgetJS.outcome == 'failure')
+      id: slackNotification
+      uses: slackapi/slack-github-action@v1.24.0
+      with:
+        # ID for the #alerts channel (https://ordrsmart.slack.com/archives/C05A2LFUR38)
+        channel-id: 'C05A2LFUR38'
+        payload: |
+          {
+            "text": "uptime-check-ordrsmart-github-pages result: `failed`",
+            "blocks": [
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "uptime-check-ordrsmart-github-pages result: `failed`"
+                }
+              }
+            ]
+          }
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN_ALERTS }}
   
   ping-ordrsmart-request-sample-v2:
     runs-on: ubuntu-latest
@@ -33,10 +56,33 @@ jobs:
     
     steps:
     - name: ping-request-sample-v2
+      id: pingRequestSampleV2
       uses: srt32/uptime@v0.2.1
       with:
         url-to-hit: "https://www.ordrsmart.com/request-a-sample/request-a-sample-v2"
         expected-statuses: "200"
+    - name: slack-notification
+      if: failure() && steps.pingRequestSampleV2.outcome == 'failure'
+      id: slackNotification
+      uses: slackapi/slack-github-action@v1.24.0
+      with:
+        # ID for the #alerts channel (https://ordrsmart.slack.com/archives/C05A2LFUR38)
+        channel-id: 'C05A2LFUR38'
+        payload: |
+          {
+            "text": "uptime-check-ordrsmart-request-sample-v2 result: `failed`",
+            "blocks": [
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "uptime-check-ordrsmart-request-sample-v2 result: `failed`"
+                }
+              }
+            ]
+          }
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN_ALERTS }}
   
   ping-ordrsmart-supplier-dashboard:
     runs-on: ubuntu-latest
