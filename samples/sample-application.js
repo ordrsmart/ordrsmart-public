@@ -47,13 +47,13 @@ class SampleApplication {
       
       $(containerID).append(card);
     });
-  }
-
-  // set the ID field depending on the sample application selected
-  let sampleApplicationCards = document.getElementsByName("sample_application");
-  sampleApplicationCards.forEach(card => {
-    card.addEventListener("change", function() { 
-      this.id = card.id;
+    
+    // set the ID field depending on the sample application selected
+    let sampleApplicationCards = document.getElementsByName("sample_application");
+    sampleApplicationCards.forEach(card => {
+      card.addEventListener("change", function() { 
+        this.id = card.id;
+      });
     });
-  });
+  }
 }
