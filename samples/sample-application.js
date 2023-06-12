@@ -1,6 +1,6 @@
 class SampleApplication {
   // populateSampleApplicationCards populates a given container with the various sample application cards.
-  function populateSampleApplicationCards(containerID) {
+  populateSampleApplicationCards(containerID) {
     let apps = [
       {
         id: 'New-Product-Development',
