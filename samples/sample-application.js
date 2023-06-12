@@ -38,8 +38,13 @@ class SampleApplication {
           'text': this.text
         })
       );
+      
+      // set the ID field if this sample application card is selected
+		  card.on("change", function() {
+  		  this.id = card.id;
+  	  });
+      
       $(containerID).append(card);
     });
   }
 }
-
