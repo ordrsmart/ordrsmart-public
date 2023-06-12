@@ -1,4 +1,4 @@
-// populate the sample application cards in the sample request form
+// populateSampleApplicationCards populates a given container with the various sample application cards.
 function populateSampleApplicationCards(containerID) {
   let apps = [
     {
