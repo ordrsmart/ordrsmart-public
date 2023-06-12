@@ -25,7 +25,6 @@ class SampleApplication {
       },
     ];
     
-    var _this = this;
     $.each(apps, function() {
       let card = $('<label />', {
         class: 'radio-button-field w-radio'                          
@@ -46,12 +45,15 @@ class SampleApplication {
         })
       );
       
-      // set the ID field if this sample application card is selected
-      card.on("change", function() {
-        _this.id = card.id;
-      });
-      
       $(containerID).append(card);
     });
   }
+
+  // set the ID field depending on the sample application selected
+  let sampleApplicationCards = document.getElementsByName("sample_application");
+  sampleApplicationCards.forEach(card => {
+    card.addEventListener("change", function() { 
+      this.id = card.id;
+    });
+  });
 }
