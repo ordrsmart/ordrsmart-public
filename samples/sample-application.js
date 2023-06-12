@@ -1,6 +1,6 @@
 class SampleApplication {
   // getter for ID instance variable
-  id() {
+  getID() {
     return this.id;
   }
 	
