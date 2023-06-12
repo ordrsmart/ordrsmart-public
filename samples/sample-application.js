@@ -1,8 +1,8 @@
 class SampleApplication {
-	// getter for ID instance variable
-	id() {
-		return this.id;
-	}
+  // getter for ID instance variable
+  id() {
+    return this.id;
+  }
 	
   // populateSampleApplicationCards populates a given container with the various sample application cards.
   populateSampleApplicationCards(containerID) {
