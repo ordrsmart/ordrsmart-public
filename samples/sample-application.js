@@ -53,6 +53,7 @@ class SampleApplication {
     sampleApplicationCards.forEach(card => {
       card.addEventListener("change", function() { 
         this.id = card.id;
+	selectedSampleAppID = card.id;
       });
     });
   }
