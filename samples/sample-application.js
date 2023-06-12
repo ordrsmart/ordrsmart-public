@@ -1,9 +1,4 @@
 class SampleApplication {
-  // getter for ID instance variable
-  getID() {
-    return this.id;
-  }
-	
   // populateSampleApplicationCards populates a given container with the various sample application cards.
   populateSampleApplicationCards(containerID) {
     let apps = [
@@ -51,8 +46,7 @@ class SampleApplication {
     // set the ID field depending on the sample application selected
     let sampleApplicationCards = document.getElementsByName("sample_application");
     sampleApplicationCards.forEach(card => {
-      card.addEventListener("change", function() { 
-        this.id = card.id;
+      card.addEventListener("change", function() {
 	selectedSampleAppID = card.id;
       });
     });
