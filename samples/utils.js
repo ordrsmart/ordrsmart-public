@@ -17,7 +17,6 @@ function preventButtonClick(buttonID, values, warningID) {
       }
       if (!v) {
         prevent = true;
-        break;
       }
     });
     
