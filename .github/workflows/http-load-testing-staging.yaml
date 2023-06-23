@@ -1,1 +1,16 @@
+name: http-load-testing-staging
 
+on:
+  schedule:
+    # run every hour
+    #- cron: '0 * * * *'
+    - cron: '*/5 * * * *'
+
+jobs:
+  http-load-test-ordrsmart-request-sample-v2-staging:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: iter8-tools/iter8-action@v1
+      with:
+        chart: load-test-http
+        valuesFile: loadtest-config-ordrsmart-request-sample-v2-staging.yaml
