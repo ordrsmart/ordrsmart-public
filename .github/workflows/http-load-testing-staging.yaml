@@ -10,7 +10,13 @@ jobs:
   http-load-test-ordrsmart-request-sample-v2-staging:
     runs-on: ubuntu-latest
     steps:
+    - run: |
+        cat << EOF > loadtest-config.yml
+          url: https://ordrsmart.webflow.io/request-a-sample/request-a-sample-v2
+          SLOs:
+            http/error-rate: 0
+        EOF
     - uses: iter8-tools/iter8-action@v1
       with:
         chart: load-test-http
-        valuesFile: loadtest-config-ordrsmart-request-sample-v2-staging.yaml
+        valuesFile: loadtest-config.yaml
