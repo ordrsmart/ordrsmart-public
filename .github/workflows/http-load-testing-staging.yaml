@@ -12,7 +12,7 @@ jobs:
     steps:
     - run: |
         cat << EOF > loadtest-config.yaml
-          url: https://www.google.com/
+          url: https://httpbin.org/get
           # url: https://ordrsmart.webflow.io/request-a-sample/request-a-sample-v2
           SLOs:
             http/error-rate: 0
