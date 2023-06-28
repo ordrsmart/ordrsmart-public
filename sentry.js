@@ -5,5 +5,3 @@ Sentry.onLoad(function() {
     sampleRate: 0.5,
   });
 });
-
-myUndefinedFunction();
