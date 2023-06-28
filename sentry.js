@@ -8,7 +8,7 @@ const initOptions = {
 // edit configuration for staging env
 if (location.hostname == "ordrsmart.webflow.io") {
   initOptions.debug = true;
-  initOptions.environment = "staging",
+  initOptions.environment = "staging";
 }
 
 Sentry.onLoad(function() {
