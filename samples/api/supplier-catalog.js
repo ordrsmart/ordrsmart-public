@@ -15,6 +15,7 @@ class SupplierCatalogAPI {
       });
       return await response.json();
     } catch (e) {
+      console.log('found api error in SupplierCatalogAPI');
       const fetchError = new Error(`failed to fetch supplier catalog for supplier with id ${supplierID}`);
       fetchError.cause = e;
       Sentry.captureException(fetchError);
