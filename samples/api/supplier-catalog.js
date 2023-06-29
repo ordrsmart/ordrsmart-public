@@ -1,6 +1,8 @@
 class SupplierCatalogAPI {
   // API to fetch catalog for given supplier ID from Airtable.
   async getSupplierCatalog(supplierID, baseURL) {
+    var resp, err;
+    
     // filter records based on supplierID
     let url = new URL("supplier_catalogs?filterByFormula=%7Bsupplier_id%7D+%3D+" + supplierID, baseURL);
     
@@ -15,18 +17,16 @@ class SupplierCatalogAPI {
       });
       
       if (!response.ok) {
-        console.log('response is NOT ok');
         throw new Error(response.status);
-      } else {
-        console.log('response is ok');
       }
       
-      return await response.json();
+      resp = await response.json();
+      return { resp, err };
     } catch (e) {
-      console.log('found api error in SupplierCatalogAPI');
-      const fetchError = new Error(`failed to fetch supplier catalog for supplier with id ${supplierID}`);
-      fetchError.cause = e;
-      Sentry.captureException(fetchError);
+      err = new Error(`failed to fetch supplier catalog for supplier with id ${supplierID}`);
+      err.cause = e;
+      Sentry.captureException(err);
+      return { resp, err }
     }
   }
 }
