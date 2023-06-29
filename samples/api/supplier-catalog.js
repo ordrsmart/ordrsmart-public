@@ -1,6 +1,6 @@
 class SupplierCatalogAPI {
   // API to fetch catalog for given supplier ID from Airtable.
-  async function getSupplierCatalog(supplierID, baseURL) {
+  async getSupplierCatalog(supplierID, baseURL) {
     // filter records based on supplierID
     let url = new URL("supplier_catalogs?filterByFormula=%7Bsupplier_id%7D+%3D+" + supplierID, baseURL);
     
