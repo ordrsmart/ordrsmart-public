@@ -13,6 +13,11 @@ class SupplierCatalogAPI {
           'Content-Type': 'application/json',
         }
       });
+      
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
+      
       return await response.json();
     } catch (e) {
       console.log('found api error in SupplierCatalogAPI');
