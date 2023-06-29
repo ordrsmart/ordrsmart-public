@@ -15,7 +15,10 @@ class SupplierCatalogAPI {
       });
       
       if (!response.ok) {
+        console.log('response is NOT ok');
         throw new Error(response.status);
+      } else {
+        console.log('response is ok');
       }
       
       return await response.json();
