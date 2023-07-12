@@ -1,7 +1,6 @@
 class SupplierCatalogAPI {
   // API to fetch catalog for given supplier ID from Airtable.
   async getSupplierCatalog(supplierID, baseURL) {
-    console.log('invoked get supplier catalog');
     var resp, err;
     
     // filter records based on supplierID
@@ -15,15 +14,12 @@ class SupplierCatalogAPI {
           'Content-Type': 'application/json',
         }
       });
-      console.log('response after await fetch is', response);
       
       if (!response.ok) {
-        console.log('response not ok');
         throw new Error(response.status);
       }
       
       resp = await response.json();
-      console.log('resp after await json is', resp);
       return { resp, err };
     } catch (e) {
       err = new Error(`failed to fetch supplier catalog for supplier with id ${supplierID}`);
