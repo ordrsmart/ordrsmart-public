@@ -1,6 +1,9 @@
 class SupplierCatalogAPI {
+  console.log('invoked supplier catalog API');
+  
   // API to fetch catalog for given supplier ID from Airtable.
   async getSupplierCatalog(supplierID, baseURL) {
+    console.log('invoked get supplier catalog');
     var resp, err;
     
     // filter records based on supplierID
