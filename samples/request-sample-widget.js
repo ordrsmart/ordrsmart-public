@@ -8,7 +8,7 @@ class SamplSmartWidget {
         // configure environment variables
         // define variables assuming production env
         var IFRAME_BASE_URL = "https://ordrsmart.com/request-a-sample/request-a-sample-v2/?supplierid=";
-        if (location.hostname == "ordrsmart.webflow.io") {
+        if (["ordrsmart.webflow.io","monkfruitcorp.com"].includes(location.hostname)) {
             // change env variables to staging
             IFRAME_BASE_URL = "https://ordrsmart.webflow.io/request-a-sample/request-a-sample-v2/?supplierid=";
         }
