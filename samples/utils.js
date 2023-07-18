@@ -19,7 +19,7 @@ function preventButtonClick(buttonID, values, warningID) {
     
     if (prevent) {
       $(warningID).show();
-  	   e.stopPropagation();
+      e.stopPropagation();
     }
   });
 }
