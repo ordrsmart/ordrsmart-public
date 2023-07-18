@@ -12,9 +12,6 @@ function preventButtonClick(buttonID, values, warningID) {
     }
     let prevent = false;
     values.forEach(v => {
-      if (buttonID == '#submitButton') {
-        console.log('current value is', v);
-      }
       if (!v) {
         prevent = true;
       }
