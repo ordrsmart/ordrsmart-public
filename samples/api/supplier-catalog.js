@@ -11,7 +11,7 @@ class SupplierCatalogAPI {
         method: 'GET',
         headers: {
           // 'Authorization': 'Bearer pat7T8A2HtJnQVCMN.5f73c92b2891a02fd5f69ba01bf29e66467017afdd003ce5c4853e4fa5e501f3',
-          // 'Authorization': 'blah',
+          'Authorization': 'blah',
           'Content-Type': 'application/json',
         }
       });
