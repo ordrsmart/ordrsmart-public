@@ -3,12 +3,12 @@ class SampleFulfillment {
   populateSampleFulfillmentCards(containerID) {
     let apps = [
       {
-        id: 'in-person-pickup',
+        id: 'in_person_pickup',
         text: "In-Person Pickup",
       },
       {
         id: 'delivery',
-        text: "Deliver to my Address",
+        text: "Deliver to my address",
       },
     ];
     
@@ -21,7 +21,7 @@ class SampleFulfillment {
           'data-name': 'sample_fulfillment',
           id: this.id,
           name: 'sample_fulfillment',
-          value: this.id.replaceAll('-', ' '),
+          value: this.id,
           class: 'w-form-formradioinput sysf-radio-button w-radio-input'
         })
       ).append(
@@ -39,7 +39,7 @@ class SampleFulfillment {
     let sampleFulfillmentCards = document.getElementsByName("sample_fulfillment");
     sampleFulfillmentCards.forEach(card => {
       card.addEventListener("change", function() {
-	      selectedSampleFulfillmentOptionID = card.id;
+        selectedSampleFulfillmentOptionID = card.id;
       });
     });
   }
